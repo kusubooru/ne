@@ -6,6 +6,8 @@ import (
 	"github.com/kusubooru/ne"
 )
 
+const contentType = "application/vnd.api+json"
+
 type API struct {
 	User *UserHandler
 }
