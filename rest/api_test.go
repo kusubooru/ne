@@ -4,18 +4,18 @@ import (
 	"reflect"
 	"testing"
 
+	"github.com/kusubooru/ne"
 	"github.com/kusubooru/ne/rest"
-	"github.com/kusubooru/shimmie"
 )
 
-var users = []shimmie.User{
+var users = []*ne.User{
 	{ID: 1, Name: "john"},
 	{ID: 2, Name: "mary"},
 }
 
 type userService struct{}
 
-func (s *userService) GetAll(limit, offset int) ([]shimmie.User, error) {
+func (s *userService) GetAll(limit, offset int) ([]*ne.User, error) {
 	return users, nil
 }
 
