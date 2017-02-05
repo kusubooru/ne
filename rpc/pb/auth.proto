@@ -1,0 +1,43 @@
+syntax = "proto3";
+package pb;
+
+import "google/api/annotations.proto";
+
+service Auth {
+  rpc Login(LoginRequest) returns (LoginResponse) {
+    option (google.api.http) = {
+      post: "/v1/auth"
+      body: "*"
+    };
+  };
+
+  rpc Refresh(RefreshRequest) returns (RefreshResponse) {
+    option (google.api.http) = {
+      put: "/v1/auth"
+      body: "*"
+    };
+  };
+}
+
+message LoginRequest {
+  string username = 1;
+  string password_hash = 2;
+  string device_name = 3;
+  bool is_mobile = 4;
+}
+
+message LoginResponse {
+  string access_token = 1;
+  string refresh_token = 2;
+}
+
+message RefreshRequest {
+  string access_token = 1;
+  string refresh_token = 2;
+}
+
+message RefreshResponse {
+  string access_token = 1;
+  string refresh_token = 2;
+}
+
