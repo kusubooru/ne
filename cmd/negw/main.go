@@ -15,7 +15,8 @@ import (
 )
 
 var (
-	userEndpoint = flag.String("users_endpoint", ":10000", "endpoint of YourService")
+	usersEndpoint = flag.String("users_endpoint", ":10000", "endpoint of UsersService")
+	authEndpoint  = flag.String("auth_endpoint", ":10000", "endpoint of AuthService")
 )
 
 // allowCORS allows Cross Origin Resoruce Sharing from any origin.
@@ -49,7 +50,13 @@ func run() error {
 
 	mux := runtime.NewServeMux()
 	opts := []grpc.DialOption{grpc.WithInsecure()}
-	err := pb.RegisterUsersHandlerFromEndpoint(ctx, mux, *userEndpoint, opts)
+
+	err := pb.RegisterUsersHandlerFromEndpoint(ctx, mux, *usersEndpoint, opts)
+	if err != nil {
+		return err
+	}
+
+	err = pb.RegisterAuthHandlerFromEndpoint(ctx, mux, *authEndpoint, opts)
 	if err != nil {
 		return err
 	}

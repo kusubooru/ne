@@ -22,12 +22,18 @@ var (
 	port           = flag.Int("port", 10000, "The server port")
 	certFile       = flag.String("tlscert", "", "TLS public key in PEM format.  Must be used together with -tlskey")
 	keyFile        = flag.String("tlskey", "", "TLS private key in PEM format.  Must be used together with -tlscert")
+	secret         = flag.String("secret", "", "secret used to sign JWT tokens")
 	// Set after flag parsing based on certFile & keyFile.
 	useTLS bool
 )
 
 func main() {
 	flag.Parse()
+	if *secret == "" {
+		log.Println("No secret specified, exiting...")
+		return
+	}
+
 	useTLS = *certFile != "" && *keyFile != ""
 	if *dataSourceName == "" {
 		log.Println("No database datasource specified, exiting...")
@@ -50,5 +56,6 @@ func main() {
 	s := store.Open(*driverName, *dataSourceName)
 	userService := shimmie2.NewUserService(s)
 	pb.RegisterUsersServer(grpcServer, rpc.NewUsersServer(userService))
+	pb.RegisterAuthServer(grpcServer, rpc.NewAuthServer(userService, []byte(*secret)))
 	grpcServer.Serve(lis)
 }
