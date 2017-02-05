@@ -19,4 +19,5 @@ type User struct {
 
 type UserService interface {
 	GetAll(ctx context.Context, limit, offset int64) ([]*User, error)
+	Login(username, password string) (*User, error)
 }

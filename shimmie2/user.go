@@ -1,6 +1,8 @@
 package shimmie2
 
 import (
+	"database/sql"
+	"errors"
 	"fmt"
 	"math"
 	"reflect"
@@ -12,6 +14,11 @@ import (
 )
 
 const defaultLimit = 10
+
+var (
+	ErrWrongCredentials = errors.New("wrong username or password")
+	ErrNotFound         = errors.New("entry not found")
+)
 
 type userService struct {
 	Shimmie shimmie.Store
@@ -42,4 +49,18 @@ func (s *userService) GetAll(ctx context.Context, limit, offset int64) ([]*ne.Us
 		users[i] = (*ne.User)(&shimmieUsers[i])
 	}
 	return users, nil
+}
+
+func (s *userService) Login(username, password string) (*ne.User, error) {
+	u, err := s.Shimmie.GetUserByName(username)
+	if err != nil {
+		if err == sql.ErrNoRows {
+			return nil, ErrNotFound
+		}
+		return nil, err
+	}
+	if u.Pass == shimmie.PasswordHash(username, password) {
+		return (*ne.User)(u), nil
+	}
+	return nil, ErrWrongCredentials
 }
