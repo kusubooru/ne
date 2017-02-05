@@ -33,21 +33,13 @@ func (s *userService) GetAll(ctx context.Context, limit, offset int64) ([]*ne.Us
 			return nil, fmt.Errorf("limit or offset too large for current platform")
 		}
 	}
-	u, err := s.Shimmie.GetAllUsers(int(limit), int(offset))
+	shimmieUsers, err := s.Shimmie.GetAllUsers(int(limit), int(offset))
 	if err != nil {
 		return nil, err
 	}
-	users := make([]*ne.User, len(u))
-	for i := range u {
-		users[i] = &ne.User{
-			ID:       u[i].ID,
-			Name:     u[i].Name,
-			Pass:     u[i].Pass,
-			JoinDate: u[i].JoinDate,
-			Admin:    u[i].Admin,
-			Email:    u[i].Email,
-			Class:    u[i].Class,
-		}
+	users := make([]*ne.User, len(shimmieUsers))
+	for i := range shimmieUsers {
+		users[i] = (*ne.User)(&shimmieUsers[i])
 	}
 	return users, nil
 }
