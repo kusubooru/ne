@@ -1,0 +1,30 @@
+syntax = "proto3";
+package pb;
+
+import "google/api/annotations.proto";
+
+service Users {
+  rpc StreamAll(Page) returns (stream User) {};
+
+  rpc GetAll(Page) returns (GetAllResponse) {
+    option (google.api.http) = {
+      get: "/v1/users"
+    };
+  };
+}
+
+message Page {
+  int64 page = 1;
+  int64 per_page = 2;
+  int64 limit = 3;
+  int64 offset = 4;
+}
+
+message User {
+  int64 id = 1;
+  string name = 2;
+}
+
+message GetAllResponse {
+  repeated User users = 1;
+}
