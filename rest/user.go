@@ -20,7 +20,7 @@ func (h *UserHandler) Register(mux *http.ServeMux) {
 }
 
 func (h *UserHandler) ServeHTTP(w http.ResponseWriter, r *http.Request) {
-	users, err := h.Service.GetAll(10, 0)
+	users, err := h.Service.GetAll(r.Context(), 10, 0)
 	if err != nil {
 		Err(w, ErrInternal, err, http.StatusInternalServerError)
 		return

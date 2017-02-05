@@ -4,6 +4,8 @@ import (
 	"reflect"
 	"testing"
 
+	"golang.org/x/net/context"
+
 	"github.com/kusubooru/ne"
 	"github.com/kusubooru/ne/rest"
 )
@@ -15,7 +17,7 @@ var users = []*ne.User{
 
 type userService struct{}
 
-func (s *userService) GetAll(limit, offset int) ([]*ne.User, error) {
+func (s *userService) GetAll(ctx context.Context, limit, offset int64) ([]*ne.User, error) {
 	return users, nil
 }
 

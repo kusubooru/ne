@@ -1,6 +1,10 @@
 package ne
 
-import "time"
+import (
+	"time"
+
+	"golang.org/x/net/context"
+)
 
 // User represents a ne user.
 type User struct {
@@ -14,5 +18,5 @@ type User struct {
 }
 
 type UserService interface {
-	GetAll(limit, offset int) ([]*User, error)
+	GetAll(ctx context.Context, limit, offset int64) ([]*User, error)
 }
