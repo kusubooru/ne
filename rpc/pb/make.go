@@ -59,9 +59,7 @@ func generateStub(gopath string, protoFiles ...string) {
 
 	var stderr bytes.Buffer
 	cmdArgs := []string{
-		"-I/usr/local/include",
 		"-I.",
-		fmt.Sprintf("-I%s/src", gopath),
 		fmt.Sprintf("-I%s/src/github.com/grpc-ecosystem/grpc-gateway/third_party/googleapis", gopath),
 		"--go_out=Mgoogle/api/annotations.proto=github.com/grpc-ecosystem/grpc-gateway/third_party/googleapis/google/api,plugins=grpc:.",
 	}
@@ -83,9 +81,7 @@ func generateGateway(gopath string, protoFiles ...string) {
 
 	var stderr bytes.Buffer
 	cmdArgs := []string{
-		"-I/usr/local/include",
 		"-I.",
-		fmt.Sprintf("-I%s/src", gopath),
 		fmt.Sprintf("-I%s/src/github.com/grpc-ecosystem/grpc-gateway/third_party/googleapis", gopath),
 		"--grpc-gateway_out=logtostderr=true:.",
 	}
