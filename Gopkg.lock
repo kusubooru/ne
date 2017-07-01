@@ -1,0 +1,67 @@
+memo = "17a4d2b6e88a70336e9362e68f24a82ce9b7ddacd66165200b18fe689523fa76"
+
+[[projects]]
+  branch = "master"
+  name = "github.com/dgrijalva/jwt-go"
+  packages = ["."]
+  revision = "9ed569b5d1ac936e6494082958d63a6aa4fff99a"
+
+[[projects]]
+  branch = "master"
+  name = "github.com/go-sql-driver/mysql"
+  packages = ["."]
+  revision = "66312f7fe2678aa0f5ec770f96702f4c4ec5aa8e"
+
+[[projects]]
+  branch = "master"
+  name = "github.com/golang/glog"
+  packages = ["."]
+  revision = "23def4e6c14b4da8ac2ed8007337bc5eb5007998"
+
+[[projects]]
+  branch = "master"
+  name = "github.com/golang/protobuf"
+  packages = ["jsonpb","proto","protoc-gen-go/descriptor","ptypes/any","ptypes/struct"]
+  revision = "18c9bb3261723cd5401db4d0c9fbc5c3b6c70fe8"
+
+[[projects]]
+  branch = "master"
+  name = "github.com/grpc-ecosystem/grpc-gateway"
+  packages = ["runtime","runtime/internal","third_party/googleapis/google/api","utilities"]
+  revision = "686368427ddb9a51628d63db6c74fbc96a206e1f"
+
+[[projects]]
+  branch = "master"
+  name = "github.com/kusubooru/shimmie"
+  packages = [".","store"]
+  revision = "0b14914c433b65922698a5f60126e23349095c9e"
+
+[[projects]]
+  branch = "master"
+  name = "github.com/satori/go.uuid"
+  packages = ["."]
+  revision = "b061729afc07e77a8aa4fad0a2fd840958f1942a"
+
+[[projects]]
+  branch = "master"
+  name = "golang.org/x/net"
+  packages = ["context","http2","http2/hpack","idna","internal/timeseries","lex/httplex","trace"]
+  revision = "da118f7b8e5954f39d0d2130ab35d4bf0e3cb344"
+
+[[projects]]
+  branch = "master"
+  name = "golang.org/x/text"
+  packages = ["internal/gen","internal/triegen","internal/ucd","secure/bidirule","transform","unicode/bidi","unicode/cldr","unicode/norm","unicode/rangetable"]
+  revision = "2bf8f2a19ec09c670e931282edfe6567f6be21c9"
+
+[[projects]]
+  branch = "master"
+  name = "google.golang.org/genproto"
+  packages = ["googleapis/rpc/status"]
+  revision = "aa2eb687b4d3e17154372564ad8d6bf11c3cf21f"
+
+[[projects]]
+  name = "google.golang.org/grpc"
+  packages = [".","codes","credentials","grpclb/grpc_lb_v1","grpclog","internal","keepalive","metadata","naming","peer","stats","status","tap","transport"]
+  revision = "b15215fb911b24a5d61d57feec4233d610530464"
+  version = "v1.4.2"
