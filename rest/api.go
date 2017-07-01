@@ -3,7 +3,7 @@ package rest
 import (
 	"net/http"
 
-	"github.com/kusubooru/ne"
+	"github.com/kusubooru/ne/ne"
 )
 
 const contentType = "application/vnd.api+json"

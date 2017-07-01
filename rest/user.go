@@ -4,7 +4,7 @@ import (
 	"encoding/json"
 	"net/http"
 
-	"github.com/kusubooru/ne"
+	"github.com/kusubooru/ne/ne"
 )
 
 type UserHandler struct {

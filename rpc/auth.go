@@ -10,9 +10,9 @@ import (
 
 	"golang.org/x/net/context"
 
-	"github.com/kusubooru/ne"
 	"github.com/kusubooru/ne/jwt"
 	"github.com/kusubooru/ne/jwt/csrf"
+	"github.com/kusubooru/ne/ne"
 	"github.com/kusubooru/ne/rpc/pb"
 	"github.com/kusubooru/ne/shimmie2"
 )

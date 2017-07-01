@@ -9,7 +9,7 @@ import (
 
 	"golang.org/x/net/context"
 
-	"github.com/kusubooru/ne"
+	"github.com/kusubooru/ne/ne"
 	"github.com/kusubooru/shimmie"
 )
 
